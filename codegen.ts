@@ -1,15 +1,16 @@
-
-import type { CodegenConfig } from '@graphql-codegen/cli';
+import type { CodegenConfig } from "@graphql-codegen/cli";
 
 const config: CodegenConfig = {
-  overwrite: true,
-  schema: "https://api.cartql.com/",
-  watch:true,
+  schema: "https://api.cartql.com",
+  documents: ["app/**/*.{ts,tsx}"],
+  ignoreNoDocuments: true,
+  watch: true,
   generates: {
-    "generated/graphql": {
-      plugins: ["typescript", "typescript-resolvers"]
-    }
-  }
+    "./gql/": {
+      preset: "client",
+      plugins: [],
+    },
+  },
 };
 
 export default config;
